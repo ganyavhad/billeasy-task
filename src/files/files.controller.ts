@@ -12,7 +12,6 @@ import { UploadFileResponseDto } from './dto/upload-file-response.dto';
 import { FileDto } from './dto/file.dto';
 
 @ApiTags('files')
-@ApiSecurity('access-token')
 @Controller('files')
 export class FilesController {
   constructor(private readonly filesService: FilesService) { }
@@ -62,7 +61,7 @@ export class FilesController {
   async findAll(
     @User() user: any,
     @Query() query: any,
-  ): Promise<FileDto[]> {
+  ): Promise<{ files: FileDto[], totalFiles: number }> {
     const { page, limit } = query;
     return this.filesService.findAll(user, page, limit);
   }

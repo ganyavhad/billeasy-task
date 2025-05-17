@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { typeOrmConfig } from './config/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { QueueModule } from './queue/queue.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     UsersModule,
     FilesModule,
-    AuthModule
+    AuthModule,
+    QueueModule
   ],
   controllers: [AppController],
   providers: [AppService],
